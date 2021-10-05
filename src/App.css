@@ -22,8 +22,17 @@ input[type='email'] {
   background-color: #fff;
   border: 1px solid #ccc;
   border-radius: 4px;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
 
+}
+
+.form-control {
+  margin-bottom: 20px;
+}
+
+.error {
+
+  color: red;
 }
 
 .App-logo {
