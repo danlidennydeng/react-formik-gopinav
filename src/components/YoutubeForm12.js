@@ -1,5 +1,5 @@
 import React from 'react'
-import { Formik, Form, Field, ErrorMessage } from 'formik'
+import { useFormik } from 'formik'
 import * as Yup from 'yup'
 
 const initialValues = {
@@ -20,44 +20,48 @@ const validationSchema = Yup.object({
 
 function YoutubeForm () {
 
+  const formik = useFormik({
+    initialValues,
+    onSubmit,
+    validationSchema
+    // validate    
+  })
+
+  console.log('Visited Field', formik.touched)
+
   return (
-    <Formik
-      initialValues={initialValues}
-      validationSchema={validationSchema}
-      onSubmit={onSubmit}
-      >
-        
-      <Form>
+    <div>
+      <form onSubmit={formik.handleSubmit}>
 
         <div className="form-control">
           <label htmlFor="name">Name</label>
-          <Field 
+          <input 
             type="text" 
             id="name" 
             name="name" 
-        
+            {...formik.getFieldProps('name')}
           />
 
-          <ErrorMessage name='name' />
+          {formik.touched.name && formik.errors.name ? <div className="error">{formik.errors.name}</div> : null}
         </div>  
 
         <div className="form-control">
           <label htmlFor='email'>E-mail</label>
-          <Field type='email' id='email' name='email' />
-          <ErrorMessage name='email' />
+          <input type='email' id='email' name='email' {...formik.getFieldProps('email')} />
+          {formik.touched.email && formik.errors.email ? <div className="error">{formik.errors.email}</div> : null}
         </div>
 
         <div className="form-control">  
           <label htmlFor='channel'>channel</label>
-          <Field type='text' id='channel' name='channel' />
-          <ErrorMessage name='channel' />
+          <input type='text' id='channel' name='channel' {...formik.getFieldProps('channel')} />
+          {formik.touched.channel && formik.errors.channel ? <div className="error">{formik.errors.channel}</div> : null}
         </div>
         
         <div>
           <button type="submit">Submit</button>
         </div>
-      </Form>
-    </Formik>
+      </form>
+    </div>
   )
 }
 
