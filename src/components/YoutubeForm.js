@@ -5,7 +5,9 @@ import * as Yup from 'yup'
 const initialValues = {
   name: '',
   email: '',
-  channel: ''
+  channel: '',
+  comment: '',
+  address: ''
 }
 
 const onSubmit = values => {
@@ -49,13 +51,37 @@ function YoutubeForm () {
 
         <div className="form-control">  
           <label htmlFor='channel'>channel</label>
-          <Field type='text' id='channel' name='channel' />
+          <Field type='text' id='channel' name='channel' placeholder='Enter channel here' />
           <ErrorMessage name='channel' />
         </div>
-        
-        <div>
-          <button type="submit">Submit</button>
+
+        <div className="form-control">
+          <label htmlFor='comment'>Comment</label>
+          <Field as='textarea' id='comment' name='comment' />
+
         </div>
+        
+        <div className="form-control">
+          <label htmlFor='address'>Address</label>
+          <Field name='address'>
+            {
+              (props) => {
+                const { field, form, meta} = props
+
+                console.log('Render props', props)
+                return (
+                <div>
+                  <input type='text' id='address' {...field} />
+                  {meta.touched && meta.error ? <div>{meta.error}</div> : null}
+                </div>
+                )
+              }
+            }
+          </Field>  
+
+        </div>
+          <button type='submit'>Submit</button>
+        
       </Form>
     </Formik>
   )
