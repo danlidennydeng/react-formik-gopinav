@@ -44,6 +44,7 @@ function YoutubeForm26 () {
       onSubmit={onSubmit}
       validateOnChange={true}
       validateOnBlur={true}
+      validateOnMount // diaable submit since beginning of page loading
       >
 
       {formik => {
@@ -175,7 +176,7 @@ function YoutubeForm26 () {
             comment: true
           })}>Visit field</button>  
 
-          <button type='submit'>Submit</button>
+          <button type='submit' disabled={!formik.isValid}>Submit</button>
         
       </Form>  
 
