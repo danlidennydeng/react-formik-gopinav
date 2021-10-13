@@ -21,3 +21,12 @@ Course Structure
 * Reusable components for input, text area, select, radio buttons and checkboxes
 * Build a user registration form
 * Wire up a UI library
+
+---------------------------------------------------------------------------
+
+Reset works for all data, not on individual field. Reset cannot work for saved form values.
+
+---------------------------------------------------------------------------
+
+Lesson 30, start a more practical new section
+
