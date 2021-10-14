@@ -30,3 +30,4 @@ Reset works for all data, not on individual field. Reset cannot work for saved f
 
 Lesson 30, start a more practical new section
 
+Lesson 36, I had to set up a special class of "choice" for making radio list inline horizontally, but how come? Why do select box and submit box is smaller than email box and textarea box?
